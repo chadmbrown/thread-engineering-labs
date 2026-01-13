@@ -1,0 +1,28 @@
+{
+  "name": "thread-engineering-labs",
+  "version": "1.0.0",
+  "description": "Training repository for Thread-Based Engineering methodology with Claude Code",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build src/index.ts --outdir=dist --target=bun",
+    "start": "bun run dist/index.js",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "verify": "bun run scripts/verify-lab.ts"
+  },
+  "dependencies": {
+    "hono": "^4.6.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "@types/bun": "latest",
+    "typescript": "^5.6.0"
+  },
+  "keywords": ["claude-code", "thread-engineering", "training", "typescript", "hono", "bun"],
+  "author": "",
+  "license": "MIT"
+}
