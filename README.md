@@ -40,11 +40,28 @@ cd thread-engineering-labs
 
 # Install dependencies
 bun install
-
-# Verify setup
-bun run dev          # Start server (should work)
-bun test             # Run tests (Lab 1 test will fail - this is intentional)
 ```
+
+### Verify Your Setup
+
+**Step 1: Start the dev server**
+```bash
+bun run dev
+```
+
+You should see:
+```
+🧵 Thread Engineering Labs running on port 3000
+```
+
+> **Note:** The server keeps running (your terminal won't show a new prompt). This is normal! Press `Ctrl+C` to stop the server when you're ready to continue.
+
+**Step 2: Run the tests**
+```bash
+bun test
+```
+
+You should see **1 failing test** - this is intentional! Lab 1's bug causes a test to fail. You'll fix this in the first lab.
 
 ### Start Training
 
