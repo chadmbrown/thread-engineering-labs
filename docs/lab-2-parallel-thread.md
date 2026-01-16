@@ -255,21 +255,25 @@ Each lane will finish with a summary like "Ready for your review." Check that:
 
 ### Step 5: Merge both branches
 
+Use **any terminal** — go back to your original repo directory to merge:
+
 ```bash
-# Back in main repo
 cd ../thread-engineering-labs
 git checkout main
-
-# Merge Lane 1
-git merge thread/parallel/lab-2-docs
-
-# Merge Lane 2  
-git merge thread/parallel/lab-2-email-tests
-
-# Should be no conflicts since files don't overlap
 ```
 
+Verify you're in the right place (prompt should show `thread-engineering-labs`), then merge:
+
+```bash
+git merge thread/parallel/lab-2-docs
+git merge thread/parallel/lab-2-email-tests
+```
+
+No conflicts should occur since the lanes modified different files.
+
 ### Step 6: Cleanup worktrees
+
+Still in your main repo directory:
 
 ```bash
 git worktree remove ../lane-1-docs
