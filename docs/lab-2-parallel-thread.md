@@ -289,6 +289,8 @@ git merge thread/parallel/lab-2-docs
 git merge thread/parallel/lab-2-email-tests
 ```
 
+**Note:** Git may open a text editor (vim) for the merge commit message. To accept the default message and continue: press `Esc`, type `:wq`, press `Enter`.
+
 No conflicts should occur since the lanes modified different files.
 
 ### Step 7: Cleanup worktrees
