@@ -24,6 +24,10 @@ app.get("/", (c) => {
   });
 });
 
+app.get("/health", (c) => {
+  return c.json({ status: "ok" });
+});
+
 // Public routes
 app.get("/users", handleGetUsers);
 app.get("/users/:id", handleGetUser);
