@@ -341,15 +341,7 @@ After completing Lab 1, ask yourself:
 
 ## Next Lab
 
-Once you're comfortable with Base Threads, move to **Lab 2: Parallel Thread** to learn how to run multiple independent tasks simultaneously.
-
-```bash
-# Reset for next lab
-git checkout main
-
-# Start Lab 2
-git checkout -b thread/parallel/lab-2-docs-and-tests
-```
+Continue to **[Lab 2: Parallel Thread](lab-2-parallel-thread.md)** to learn how to run multiple independent tasks simultaneously.
 
 ---
 

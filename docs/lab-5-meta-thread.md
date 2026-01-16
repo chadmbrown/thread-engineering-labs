@@ -88,19 +88,25 @@ A good Meta Thread produces a map with:
 
 ## Setup
 
-### 1. Read the feature spec
+### 1. Create your branch
+
+```bash
+git checkout -b thread/meta/lab-5-notification-decomposition
+```
+
+### 2. Read the feature spec
 
 ```bash
 cat docs/feature-notification-preferences.md
 ```
 
-### 2. Start Claude Code
+### 3. Start Claude Code
 
 ```bash
 claude
 ```
 
-### 3. Enter Plan Mode
+### 4. Enter Plan Mode
 
 Press `Shift+Tab` twice.
 
@@ -393,12 +399,7 @@ For very large work:
 
 ## Next Lab
 
-Once you're comfortable with decomposition, move to **Lab 6: Long Thread** to learn how to automate mechanical grunt work.
-
-```bash
-git checkout main
-git checkout -b thread/long/lab-6-add-jsdoc
-```
+Continue to **[Lab 6: Long Thread](lab-6-long-thread.md)** to learn how to automate mechanical grunt work.
 
 ---
 

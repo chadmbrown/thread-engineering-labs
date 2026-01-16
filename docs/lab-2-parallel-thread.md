@@ -353,13 +353,7 @@ If you have 3 unrelated bugs in different files, create 3 lanes and fix them all
 
 ## Next Lab
 
-Once you're comfortable running parallel lanes, move to **Lab 3: Chained Thread** to learn how to handle risky, multi-phase work with checkpoints.
-
-```bash
-# Reset for next lab (after verifying Lab 2)
-git checkout main
-git checkout -b thread/chained/lab-3-auth-expiration
-```
+Continue to **[Lab 3: Chained Thread](lab-3-chained-thread.md)** to learn how to handle risky, multi-phase work with checkpoints.
 
 ---
 

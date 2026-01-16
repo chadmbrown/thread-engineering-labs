@@ -99,7 +99,13 @@ Give all responses to a fresh Claude session. Ask for:
 
 ## Setup
 
-### 1. Prepare Your Lanes
+### 1. Create your branch
+
+```bash
+git checkout -b thread/fusion/lab-4-architecture-decision
+```
+
+### 2. Prepare Your Lanes
 
 You'll need 3-4 perspectives. Options:
 
@@ -113,7 +119,7 @@ You'll need 3-4 perspectives. Options:
 - Browser 1: claude.ai/chat
 - Browser 2: Gemini or ChatGPT
 
-### 2. Read the Decision Context
+### 3. Read the Decision Context
 
 ```bash
 cat docs/architecture-decision.md
@@ -459,12 +465,7 @@ For reviewing a PR:
 
 ## Next Lab
 
-Once you're comfortable gathering and synthesizing perspectives, move to **Lab 5: Meta Thread** to learn how to decompose large work into manageable threads.
-
-```bash
-git checkout main
-# Lab 5 is also a planning exercise - read docs/feature-notification-preferences.md
-```
+Continue to **[Lab 5: Meta Thread](lab-5-meta-thread.md)** to learn how to decompose large work into manageable threads.
 
 ---
 

@@ -392,12 +392,7 @@ For very complex changes, add a design review:
 
 ## Next Lab
 
-Once you're comfortable with checkpoint-driven work, move to **Lab 4: Fusion Thread** to learn how to get multiple perspectives on hard problems.
-
-```bash
-git checkout main
-# Lab 4 doesn't require a specific branch - it's a decision exercise
-```
+Continue to **[Lab 4: Fusion Thread](lab-4-fusion-thread.md)** to learn how to get multiple perspectives on hard problems.
 
 ---
 
