@@ -227,23 +227,31 @@ Both Claude sessions start working. They'll produce plans for review.
 **Lane 2** should show a plan like:
 > I'll create 5 test cases covering valid sends, missing params, and template substitution.
 
-Approve both if they look right.
+### Step 3: Approve and let them implement
 
-### Step 3: Let them implement
+If the plans look reasonable, tell each Claude to proceed. Just type:
 
-Switch to auto-accept mode in each (`Shift+Tab`) and let them work. 
+```
+Proceed
+```
+
+Or be more specific: "Looks good, implement it."
+
+**Tip:** You can switch to auto-accept mode (`Shift+Tab`) to let Claude make file changes without prompting for each one.
 
 Lane 1 will finish faster (just writing markdown). Lane 2 takes longer (writing and running tests).
 
 ### Step 4: Review completions
 
-As each finishes:
+Each lane will finish with a summary like "Ready for your review." Check that:
 
 **Lane 1 (Docs):**
-> Lint passes. README now has Setup, Usage, and Project Structure sections.
+- README has real content (not TODOs)
+- Lint passed
 
 **Lane 2 (Tests):**
-> Created 5 tests. All pass. Coverage: basic send, missing params, template substitution.
+- Test file was created
+- Tests pass
 
 ### Step 5: Merge both branches
 
