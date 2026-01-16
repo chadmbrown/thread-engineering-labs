@@ -112,22 +112,35 @@ git worktree add ../lane-1-docs -b thread/parallel/lab-2-docs
 git worktree add ../lane-2-tests -b thread/parallel/lab-2-email-tests
 ```
 
-### 2. Open two terminals
+### 2. Open two terminals and navigate to each worktree
 
-- Terminal 1: `cd ../lane-1-docs`
-- Terminal 2: `cd ../lane-2-tests`
+**Terminal 1 (Lane 1 - Docs):**
+```bash
+cd ../lane-1-docs
+```
 
-Name your terminal tabs "Lane 1 - Docs" and "Lane 2 - Tests" to avoid confusion.
+**Terminal 2 (Lane 2 - Tests):**
+```bash
+cd ../lane-2-tests
+```
+
+**Verify you're in the right place** — your terminal prompt should show the new directory:
+```
+~/projects/lane-1-docs %     # Terminal 1
+~/projects/lane-2-tests %    # Terminal 2
+```
+
+If your prompt still shows `thread-engineering-labs`, the `cd` didn't work. Try again without copying any backticks or quotes from the docs.
+
+**Tip:** Name your terminal tabs "Lane 1 - Docs" and "Lane 2 - Tests" to avoid confusion.
 
 ### 3. Start Claude in each
 
 ```bash
-# Terminal 1
-cd ../lane-1-docs
+# In Terminal 1 (lane-1-docs)
 claude
 
-# Terminal 2
-cd ../lane-2-tests
+# In Terminal 2 (lane-2-tests)
 claude
 ```
 
