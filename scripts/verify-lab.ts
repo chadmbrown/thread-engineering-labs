@@ -58,9 +58,7 @@ async function checkLab1(): Promise<CheckResult[]> {
   const content = readFileSync(filePath, "utf-8");
 
   // Extract the getUserPreferences function body
-  const funcMatch = content.match(
-    /function getUserPreferences[\s\S]*?^}/m
-  );
+  const funcMatch = content.match(/function getUserPreferences[\s\S]*?^}/m);
   const funcBody = funcMatch?.[0] || "";
 
   // Look for proper null checks within getUserPreferences specifically
@@ -166,9 +164,7 @@ async function checkLab3(): Promise<CheckResult[]> {
   const content = readFileSync(filePath, "utf-8");
 
   // Extract the authMiddleware function body
-  const middlewareMatch = content.match(
-    /function authMiddleware[\s\S]*?^}/m
-  );
+  const middlewareMatch = content.match(/function authMiddleware[\s\S]*?^}/m);
   const middlewareBody = middlewareMatch?.[0] || "";
 
   // Look for expiration checking logic WITHIN authMiddleware
@@ -201,8 +197,7 @@ async function checkLab3(): Promise<CheckResult[]> {
     /const\s+(isTokenExpired|isExpired|checkExpiration)\s*=\s*\(/.test(codeOnlyContent);
 
   // Check if there's a return with "expired" error in middleware (using code-only body)
-  const hasExpiredErrorReturn =
-    /return\s+c\.json\s*\(\s*\{[^}]*expired/i.test(codeOnlyBody);
+  const hasExpiredErrorReturn = /return\s+c\.json\s*\(\s*\{[^}]*expired/i.test(codeOnlyBody);
 
   if (
     !hasExpirationCallInMiddleware &&

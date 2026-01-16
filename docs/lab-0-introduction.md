@@ -95,6 +95,8 @@ bun install
 
 ### 3. Verify the App Works
 
+**What you're testing:** A small user management API (Hono/TypeScript) with user routes, auth middleware, and validation utilities.
+
 ```bash
 # Start dev server
 bun run dev
@@ -102,19 +104,21 @@ bun run dev
 # In another terminal, test it
 curl http://localhost:3000/health
 # Should return: {"status":"ok"}
+```
 
-# Run tests
+Now run tests and lint — **both will show issues**, and that's expected:
+
+```bash
+# Run tests (expect 1 failure)
 bun test
 
-# Run lint
+# Run lint (expect warnings)
 bun run lint
 ```
 
-**What you're testing:** A small user management API (Hono/TypeScript) with user routes, auth middleware, and validation utilities.
+**Target state:** 29 passing tests, 0 failures, clean lint.
 
-**Target state:** 29 passing tests, 0 failures.
-
-**What you'll see:** 28 passing, 1 failing. The failure in `tests/routes/users.test.ts` is a planted bug — a null check issue you'll fix in Lab 1. Don't fix it yet!
+**What you'll see:** 28 passing tests, 1 failure. Lint warnings about non-null assertions. Both are caused by the same planted bug in `src/routes/users.ts` — a null check issue you'll fix in Lab 1. Don't fix it yet!
 
 ### 4. Verify Claude Code Setup
 
