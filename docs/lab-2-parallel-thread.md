@@ -323,6 +323,18 @@ Result: PASS
 
 ---
 
+## Next Lab
+
+Continue to **[Lab 3: Chained Thread](lab-3-chained-thread.md)** to learn how to handle risky, multi-phase work with checkpoints.
+
+---
+
+## Reference (Optional)
+
+The sections below are for troubleshooting, deeper learning, and advanced variations. Skip if you're ready for Lab 3.
+
+---
+
 ## Success Criteria
 
 Your Parallel Thread succeeded if:
@@ -395,12 +407,6 @@ If you have 3 unrelated bugs in different files, create 3 lanes and fix them all
 - How much time did you save vs. sequential?
 - Was coordinating two sessions harder than expected?
 - What tasks would you parallelize next?
-
----
-
-## Next Lab
-
-Continue to **[Lab 3: Chained Thread](lab-3-chained-thread.md)** to learn how to handle risky, multi-phase work with checkpoints.
 
 ---
 

@@ -320,6 +320,18 @@ Result: PASS
 
 ---
 
+## Next Lab
+
+Continue to **[Lab 6: Long Thread](lab-6-long-thread.md)** to learn how to automate mechanical grunt work.
+
+---
+
+## Reference (Optional)
+
+The sections below are for troubleshooting, deeper learning, and advanced variations. Skip if you're ready for Lab 6.
+
+---
+
 ## Success Criteria
 
 Your Meta Thread succeeded if:
@@ -394,12 +406,6 @@ For very large work:
 - Are the threads truly independent?
 - Could you parallelize more than you initially thought?
 - How long did planning take vs. expected execution?
-
----
-
-## Next Lab
-
-Continue to **[Lab 6: Long Thread](lab-6-long-thread.md)** to learn how to automate mechanical grunt work.
 
 ---
 

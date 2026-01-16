@@ -246,6 +246,18 @@ Result: PASS
 
 ---
 
+## Next Lab
+
+Continue to **[Lab 2: Parallel Thread](lab-2-parallel-thread.md)** to learn how to run multiple independent tasks simultaneously.
+
+---
+
+## Reference (Optional)
+
+The sections below are for troubleshooting, deeper learning, and advanced variations. Skip if you're ready for Lab 2.
+
+---
+
 ## Success Criteria
 
 Your Base Thread succeeded if:
@@ -336,12 +348,6 @@ After completing Lab 1, ask yourself:
 - Was the scope appropriately constrained?
 - Did Claude's summary accurately reflect the changes?
 - How long did it take vs. doing it manually?
-
----
-
-## Next Lab
-
-Continue to **[Lab 2: Parallel Thread](lab-2-parallel-thread.md)** to learn how to run multiple independent tasks simultaneously.
 
 ---
 

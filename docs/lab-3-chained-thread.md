@@ -321,6 +321,18 @@ Result: PASS
 
 ---
 
+## Next Lab
+
+Continue to **[Lab 4: Fusion Thread](lab-4-fusion-thread.md)** to learn how to get multiple perspectives on hard problems.
+
+---
+
+## Reference (Optional)
+
+The sections below are for troubleshooting, deeper learning, and advanced variations. Skip if you're ready for Lab 4.
+
+---
+
 ## Success Criteria
 
 Your Chained Thread succeeded if:
@@ -387,12 +399,6 @@ For very complex changes, add a design review:
 - Was any phase too long or too short?
 - How confident did you feel at each checkpoint?
 - What would you do differently next time?
-
----
-
-## Next Lab
-
-Continue to **[Lab 4: Fusion Thread](lab-4-fusion-thread.md)** to learn how to get multiple perspectives on hard problems.
 
 ---
 

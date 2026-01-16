@@ -392,6 +392,18 @@ Result: PASS
 
 ---
 
+## Next Lab
+
+Continue to **[Lab 5: Meta Thread](lab-5-meta-thread.md)** to learn how to decompose large work into manageable threads.
+
+---
+
+## Reference (Optional)
+
+The sections below are for troubleshooting, deeper learning, and advanced variations. Skip if you're ready for Lab 5.
+
+---
+
 ## Success Criteria
 
 Your Fusion Thread succeeded if:
@@ -460,12 +472,6 @@ For reviewing a PR:
 - Which source gave the most useful input?
 - Was synthesis easier or harder than expected?
 - How would you use this for a real decision?
-
----
-
-## Next Lab
-
-Continue to **[Lab 5: Meta Thread](lab-5-meta-thread.md)** to learn how to decompose large work into manageable threads.
 
 ---
 

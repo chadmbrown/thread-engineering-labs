@@ -284,6 +284,48 @@ Result: PASS
 
 ---
 
+## Training Complete!
+
+You've now learned all 6 thread types:
+
+| Thread | Use For |
+|--------|---------|
+| **Base** | Single focused task |
+| **Parallel** | Independent tasks simultaneously |
+| **Chained** | Risky work with checkpoints |
+| **Fusion** | Multiple perspectives → decision |
+| **Meta** | Decompose large work |
+| **Long** | Mechanical grunt work |
+
+### Next Steps
+
+1. **Practice:** Use these patterns on real work for a week
+2. **Customize:** Create slash commands for your most common patterns
+3. **Share:** Teach teammates the patterns that helped you most
+4. **Contribute:** Found an issue or improvement? Open a GitHub issue or PR
+
+---
+
+## Certification
+
+Run the full verification suite:
+
+```bash
+bun run verify all
+```
+
+If all 6 labs pass, you've completed Thread-Based Engineering training.
+
+Share your completion in the GitHub Discussions!
+
+---
+
+## Reference (Optional)
+
+The sections below are for troubleshooting, deeper learning, and advanced variations.
+
+---
+
 ## Success Criteria
 
 Your Long Thread succeeded if:
@@ -369,42 +411,6 @@ Incremental improvement over time.
 - Were the stop conditions appropriate?
 - How did the quality compare to doing it manually?
 - What other mechanical tasks could you Long Thread?
-
----
-
-## Training Complete!
-
-You've now learned all 6 thread types:
-
-| Thread | Use For |
-|--------|---------|
-| **Base** | Single focused task |
-| **Parallel** | Independent tasks simultaneously |
-| **Chained** | Risky work with checkpoints |
-| **Fusion** | Multiple perspectives → decision |
-| **Meta** | Decompose large work |
-| **Long** | Mechanical grunt work |
-
-### Next Steps
-
-1. **Practice:** Use these patterns on real work for a week
-2. **Customize:** Create slash commands for your most common patterns
-3. **Share:** Teach teammates the patterns that helped you most
-4. **Contribute:** Found an issue or improvement? Open a GitHub issue or PR
-
----
-
-## Certification
-
-Run the full verification suite:
-
-```bash
-bun run verify all
-```
-
-If all 6 labs pass, you've completed Thread-Based Engineering training.
-
-Share your completion in the GitHub Discussions!
 
 ---
 
