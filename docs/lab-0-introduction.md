@@ -101,14 +101,18 @@ bun run dev
 curl http://localhost:3000/health
 # Should return: {"status":"ok"}
 
-# Run tests (Lab 1 test will fail - this is expected)
+# Run tests
 bun test
 
 # Run lint
 bun run lint
 ```
 
-You should see one failing test in `tests/routes/users.test.ts` — this is the Lab 1 bug. Don't fix it yet!
+**What you're testing:** A small user management API (Hono/TypeScript) with user routes, auth middleware, and validation utilities.
+
+**Target state:** 29 passing tests, 0 failures.
+
+**What you'll see:** 28 passing, 1 failing. The failure in `tests/routes/users.test.ts` is a planted bug — a null check issue you'll fix in Lab 1. Don't fix it yet!
 
 ### 4. Verify Claude Code Setup
 
