@@ -149,7 +149,7 @@ Add token expiration checking to `src/middleware/auth.ts`. Currently the middlew
 4. Rollback strategy:
    - Exact steps to undo this change
    
-**STOP after Phase 1. Wait for my approval before Phase 2.**
+**STOP after Phase 1. Say "Awaiting approval — reply 'proceed' when ready for Phase 2."**
 
 ### PHASE 2: Implementation (Only after I approve Phase 1)
 1. Create `isTokenExpired()` utility if needed
@@ -157,7 +157,7 @@ Add token expiration checking to `src/middleware/auth.ts`. Currently the middlew
 3. Add test cases for expired tokens
 4. List all changes made
 
-**STOP after Phase 2. Wait for my review before Phase 3.**
+**STOP after Phase 2. Say "Awaiting review — reply 'proceed' when ready for Phase 3."**
 
 ### PHASE 3: Verification (Only after I approve Phase 2)
 1. Run `bun test tests/middleware/auth.test.ts`
@@ -165,7 +165,7 @@ Add token expiration checking to `src/middleware/auth.ts`. Currently the middlew
 3. Run `bun run lint`
 4. Report all results
 
-**STOP for final review before commit.**
+**STOP for final review. Say "Awaiting final review — reply 'commit' when ready."**
 
 ## Critical Rules
 - Do NOT proceed to the next phase without my explicit "approved" or "proceed"

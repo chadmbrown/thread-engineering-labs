@@ -115,7 +115,7 @@ Fix the null check bug in `src/routes/users.ts`. The `getUserPreferences` functi
    - The test results
    - Any concerns or follow-up items
 
-Stop after the summary for my review before committing.
+Stop after the summary for my review. Say "Awaiting your review — reply 'commit' when ready."
 ```
 
 ---

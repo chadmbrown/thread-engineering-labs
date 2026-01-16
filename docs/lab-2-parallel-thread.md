@@ -175,7 +175,7 @@ Keep it concise — this is a training repo, not production documentation.
 3. **Verify**: Run `bun run lint` to check markdown formatting.
 4. **Summarize**: What you added, any concerns.
 
-Stop after summary for my review.
+Stop after summary for my review. Say "Awaiting your review — reply 'proceed' or 'commit' when ready."
 ```
 
 ### Lane 2 Prompt: Tests
@@ -208,7 +208,7 @@ Create `tests/services/email.test.ts` with tests for:
 3. **Verify**: Run `bun test tests/services/email.test.ts`. All tests must pass.
 4. **Summarize**: Test count, what's covered, any edge cases not tested.
 
-Stop after summary for my review.
+Stop after summary for my review. Say "Awaiting your review — reply 'proceed' or 'commit' when ready."
 ```
 
 ---
