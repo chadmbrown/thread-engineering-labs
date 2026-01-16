@@ -86,10 +86,12 @@ git --version    # Should show version
 ### 2. Clone and Install
 
 ```bash
-git clone https://github.com/[username]/thread-engineering-labs.git
+git clone https://github.com/chadmbrown/thread-engineering-labs.git
 cd thread-engineering-labs
 bun install
 ```
+
+**Note:** All work is local. You won't push anything — this is practice.
 
 ### 3. Verify the App Works
 
@@ -235,8 +237,10 @@ bun run lint && bun test
 
 Start with **Lab 1: Base Thread** to learn the fundamentals.
 
+From your local repo directory:
+
 ```bash
-# Create your lab branch
+# Create a local branch for Lab 1
 git checkout -b thread/base/lab-1-fix-null-check
 
 # Start Claude Code
