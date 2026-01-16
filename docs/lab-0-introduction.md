@@ -74,7 +74,8 @@ This repository contains a small but realistic Hono/TypeScript application with 
 
 - **Bun** installed: https://bun.sh
 - **Claude Code** installed: https://docs.anthropic.com/en/docs/claude-code
-- **Git** configured
+- **Git** installed and basic familiarity (clone, branch, commit, merge)
+  - Rusty on git? Claude can explain commands as you go, or see [Git Basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
 
 Verify:
 ```bash
