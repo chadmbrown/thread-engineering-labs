@@ -253,9 +253,29 @@ Each lane will finish with a summary like "Ready for your review." Check that:
 - Test file was created
 - Tests pass
 
-### Step 5: Merge both branches
+### Step 5: Tell Claude to commit in each lane
 
-Use **any terminal** — go back to your original repo directory to merge:
+In **each terminal**, tell Claude to commit the changes:
+
+```
+Commit with message "docs: add setup instructions to README"
+```
+
+```
+Commit with message "test: add email service tests"
+```
+
+Wait for both commits to complete before proceeding.
+
+### Step 6: Merge both branches
+
+You have three options for running the merge commands:
+
+1. **Use a separate terminal** (simplest) — leave Claude running in the worktree terminals
+2. **Exit Claude first** — type `/exit` in a worktree terminal, then use it
+3. **Ask Claude to do it** — tell Claude in either lane to run the merge commands
+
+Using a separate terminal is easiest. Navigate to your original repo:
 
 ```bash
 cd ../thread-engineering-labs
@@ -271,7 +291,7 @@ git merge thread/parallel/lab-2-email-tests
 
 No conflicts should occur since the lanes modified different files.
 
-### Step 6: Cleanup worktrees
+### Step 7: Cleanup worktrees
 
 Still in your main repo directory:
 
