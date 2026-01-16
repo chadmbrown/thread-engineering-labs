@@ -235,17 +235,7 @@ bun run lint && bun test
 
 ## Ready?
 
-Start with **Lab 1: Base Thread** to learn the fundamentals.
-
-From your local repo directory:
-
-```bash
-# Create a local branch for Lab 1
-git checkout -b thread/base/lab-1-fix-null-check
-
-# Start Claude Code
-claude
-```
+Continue to **[Lab 1: Base Thread](lab-1-base-thread.md)** to learn the fundamentals.
 
 ---
 
