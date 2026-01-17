@@ -107,6 +107,12 @@ These competing viewpoints force different reasoning paths, even from the same m
 git checkout -b thread/bonus/automated-fusion
 ```
 
+> **Branch already exists?** If you're retrying this lab, delete the old branch first:
+> ```bash
+> git checkout main && git branch -D thread/bonus/automated-fusion
+> ```
+> Then create it fresh.
+
 ### 2. Create the commands directory
 
 ```bash
@@ -162,6 +168,10 @@ When I run `/fusion "some question"`, it should:
 The synthesis should be well-structured and scannable — use headers, bold labels, and a clear recommendation section.
 ```
 
+**What to expect:** Claude will ask permission to create the file. Select "Yes" and let it proceed. If you see multiple permission prompts, that's normal — just approve them.
+
+> **Tip:** Press `Shift+Tab` before pasting to enable auto-accept mode, which lets Claude work without prompting for each file operation.
+
 ### Review the Generated File
 
 After Claude creates the file, review it:
@@ -190,6 +200,18 @@ This is how you'll build all your custom commands — describe what you want, re
 ---
 
 ## Test Your Skill
+
+**Important:** New slash commands aren't loaded until you restart Claude Code. Exit and restart:
+
+```bash
+# Exit current session
+/exit
+
+# Restart Claude Code
+claude
+```
+
+Now the `/fusion` command will be available.
 
 ### Test 1: Technical Decision
 
@@ -287,6 +309,12 @@ claude
 ---
 
 ## Troubleshooting
+
+### "Unknown skill: fusion" or command not recognized
+
+**Why:** New slash commands aren't loaded until you restart Claude Code.
+
+**Fix:** Exit the current session (`/exit`) and start a new one (`claude`). The command will be available after restart.
 
 ### "Agents aren't running in parallel"
 
