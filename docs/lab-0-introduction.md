@@ -248,6 +248,20 @@ bun run lint && bun test
 
 ---
 
+## Tips for Success
+
+These lessons come from real testing. They'll save you time.
+
+**Study the prompts, don't blindly paste.** The prompts in these labs are carefully crafted. Notice how constraints, examples, and structure shape Claude's output. Understanding *why* a prompt works teaches you prompt engineering — a skill that transfers to all your AI work.
+
+**Plan mode means plan, not build.** When a lab says "enter Plan Mode" (`Shift+Tab` twice), Claude will explore and plan but NOT write code. Skip this step and Claude may build an entire feature when you only wanted a plan. Lab 5 especially depends on this.
+
+**Split your screen.** Keep the lab document visible while working in the terminal. VS Code with a terminal panel + markdown preview works well. You'll follow along better without constant tab-switching.
+
+**Git basics help.** Each lab uses branches. If you're rusty, Claude can explain git commands as you go, or review [Git Basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics) before starting.
+
+---
+
 ## Ready?
 
 Continue to **[Lab 1: Base Thread](lab-1-base-thread.md)** to learn the fundamentals.
