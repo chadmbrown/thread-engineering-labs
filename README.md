@@ -83,11 +83,12 @@ code docs/lab-0-introduction.md
 | [Lab 1](docs/lab-1-base-thread.md) | 30 min | Fix a null check bug using Base Thread pattern |
 | [Lab 2](docs/lab-2-parallel-thread.md) | 30 min | Complete docs + tests in parallel lanes |
 | [Lab 3](docs/lab-3-chained-thread.md) | 30 min | Add token expiration with phased checkpoints |
-| [Lab 4](docs/lab-4-fusion-thread.md) | 45 min | Make an architecture decision using multiple perspectives |
+| [Lab 4](docs/lab-4-fusion-thread.md) | 20 min | Make an architecture decision using multiple perspectives |
 | [Lab 5](docs/lab-5-meta-thread.md) | 30 min | Decompose a large feature into a thread map |
 | [Lab 6](docs/lab-6-long-thread.md) | 30 min | Add JSDoc to all utilities via Long Thread |
+| [Lab 7](docs/lab-7-automated-fusion.md) | 45 min | Build a `/fusion` skill that automates multi-perspective analysis |
 
-**Total time:** ~3.5 hours (can be done over multiple sessions)
+**Total time:** ~4 hours (can be done over multiple sessions)
 
 ---
 
@@ -124,7 +125,7 @@ If you're using this for team training:
 
 1. **Week 1:** Labs 0-2 (Base, Parallel)
 2. **Week 2:** Labs 3-4 (Chained, Fusion)
-3. **Week 3:** Labs 5-6 (Meta, Long) + team retro
+3. **Week 3:** Labs 5-7 (Meta, Long, Automated Fusion) + team retro
 
 Consider having team members share their experiences after each lab.
 
