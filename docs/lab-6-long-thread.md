@@ -316,13 +316,13 @@ You've now learned all 6 thread types:
 
 You've learned the patterns. Now automate them.
 
-**[Lab 7: Automated Fusion](lab-7-automated-fusion.md)** — Build a `/fusion` skill that turns 15-minute multi-perspective analysis into a 30-second command. This is where it all comes together.
+**[Lab 7: Automated Fusion](lab-7-automated-fusion.md)** — Build a `/fusion` skill that spawns real parallel agents for true perspective independence. This is where it all comes together.
 
 ---
 
 ## Certification
 
-**Congratulations!** You've completed all 6 Thread Engineering Labs.
+**Congratulations!** You've learned all 6 thread types.
 
 You now have hands-on experience with:
 - **Base Threads** for focused single tasks
