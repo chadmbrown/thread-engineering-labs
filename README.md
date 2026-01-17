@@ -10,16 +10,16 @@ Based on [Boris Cherny's workflow](https://x.com/bcherny/status/2007179832300581
 
 How to run Claude Code sessions as purposeful "threads" instead of wandering conversations:
 
-| Thread Type | Use Case | Lab |
-|-------------|----------|-----|
-| **Base Thread** | Single focused task (bug fix, small feature) | Lab 1 |
-| **Parallel Thread** | Multiple independent tasks simultaneously | Lab 2 |
-| **Chained Thread** | Risky work with human checkpoints | Lab 3 |
-| **Fusion Thread** | Multiple perspectives → synthesized decision | Lab 4 |
-| **Meta Thread** | Decompose large work into child threads | Lab 5 |
-| **Long Thread** | Mechanical grunt work (add types, fix lint) | Lab 6 |
+| Thread Type | Use Case |
+|-------------|----------|
+| **Base Thread** | Single focused task (bug fix, small feature) |
+| **Parallel Thread** | Multiple independent tasks simultaneously |
+| **Chained Thread** | Risky work with human checkpoints |
+| **Fusion Thread** | Multiple perspectives → synthesized decision |
+| **Meta Thread** | Decompose large work into child threads |
+| **Long Thread** | Mechanical grunt work (add types, fix lint) |
 
-Each lab takes ~30 minutes and uses this codebase for hands-on exercises.
+Each lab teaches one thread type through hands-on exercises.
 
 ---
 
