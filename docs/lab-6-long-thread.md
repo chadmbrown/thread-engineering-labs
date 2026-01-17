@@ -152,7 +152,7 @@ export function isValidEmail(email: string): boolean {
 2. For each file:
    a. Read the file
    b. Add JSDoc to each exported function
-   c. Run `bun run lint` to verify no errors
+   c. Run `bunx biome check src/utils/` to verify no lint errors in your changes
    d. Report: "[filename]: Added JSDoc to N functions. Lint: pass/fail"
 3. After all files, run `bun run typecheck` and report
 
@@ -168,11 +168,11 @@ STOP and ask me if:
 - A function's purpose is unclear
 - You encounter an error you can't fix
 - A file has more than 10 functions (confirm before proceeding)
-- Lint fails after 2 fix attempts
+- Lint fails on src/utils/ after 2 fix attempts
 
 ## Quality Checks
 - Every exported function must have JSDoc
-- No lint errors when done
+- No lint errors in src/utils/ when done
 - Examples must be realistic (not placeholder)
 
 Begin with `src/utils/validators.ts`.
