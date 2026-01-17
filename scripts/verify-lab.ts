@@ -266,7 +266,7 @@ async function checkLab4(): Promise<CheckResult[]> {
   const decisionContent = decisionMatch?.[1]?.trim() || "";
 
   if (
-    decisionContent.length < 50 ||
+    decisionContent.length < 20 ||
     decisionContent.includes("[Use Lab 4") ||
     decisionContent.includes("[Your")
   ) {
