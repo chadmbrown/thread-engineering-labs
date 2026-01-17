@@ -104,9 +104,9 @@ Count the functions. Know what you're working with.
 claude
 ```
 
-### 4. Verify permissions
+### 4. Verify permissions (optional)
 
-Run `/permissions` in Claude Code. Make sure `Edit` and `Bash(bun run lint:*)` are allowed.
+Type `/permissions` directly in Claude Code (this is a slash command you type, not a prompt for Claude). Verify `Edit` is allowed. If not, Claude will prompt you when needed — you can skip this step.
 
 ---
 
