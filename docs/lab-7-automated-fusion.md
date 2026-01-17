@@ -32,19 +32,23 @@ One command. Multiple perspectives. Synthesized answer.
 
 ## Why Automate Fusion?
 
-The manual Fusion Thread (Lab 4) works, but requires:
-- Opening 3+ terminal/browser sessions
-- Copy-pasting the same prompt
-- Waiting and collecting responses
-- Copy-pasting into a synthesis session
+The Virtual Roundtable from Lab 4 is fast and effective — one prompt gets you multiple perspectives in a single session. For most decisions, that's enough.
 
-That's 10-15 minutes of coordination overhead per decision.
+But the Virtual Roundtable has a limitation: **simulated personas in shared context**. The "experts" are role-playing within the same conversation, which means they can subtly influence each other.
 
-The automated version:
-- Single command entry point
-- Parallel execution (faster)
-- Automatic collection and synthesis
-- Reusable for any decision
+The automated `/fusion` skill gives you:
+- **True parallel agents** — each perspective runs in its own isolated context
+- **Real independence** — no cross-contamination between viewpoints
+- **Single command entry point** — type `/fusion "question"` and walk away
+- **Automatic synthesis** — perspectives collected and merged without manual work
+
+When to use which:
+
+| Approach | Use When |
+|----------|----------|
+| Virtual Roundtable (Lab 4) | Quick decisions, most cases |
+| `/fusion` skill (Lab 7) | High-stakes decisions, want true independence |
+| Manual multi-session (Lab 4 Reference) | Maximum independence, multiple AI providers |
 
 ---
 
@@ -108,6 +112,8 @@ git checkout -b thread/bonus/automated-fusion
 ```bash
 mkdir -p .claude/commands
 ```
+
+This is where Claude Code looks for custom slash commands. Any `.md` file in this directory becomes a `/command` you can invoke. The filename becomes the command name — so `fusion.md` becomes `/fusion`.
 
 ### 3. Start Claude Code
 
@@ -396,4 +402,4 @@ git commit -m "feat: add /fusion skill for automated multi-perspective analysis"
 
 ---
 
-*Automated Fusion turns a 15-minute manual process into a 30-second command.*
+*Automated Fusion gives you true perspective independence with a single command.*
