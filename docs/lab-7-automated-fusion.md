@@ -143,10 +143,10 @@ Create a slash command file at `.claude/commands/fusion.md` that automates multi
 When I run `/fusion "some question"`, it should:
 
 1. **Spawn 3 Task agents in parallel** (using the Task tool with subagent_type "general-purpose")
-2. **Each agent analyzes from a different perspective:**
-   - Simplicity Advocate: Argues for the simplest solution
-   - Scale Advocate: Argues for the most scalable, production-ready solution
-   - Pragmatist: Weighs all trade-offs objectively
+2. **Each agent analyzes from a different perspective — they must be OPINIONATED and take strong positions:**
+   - Simplicity Advocate: Argues forcefully for the simplest solution. Should say things like "This is over-engineered" or "You're solving problems you don't have"
+   - Scale Advocate: Argues forcefully for the production-ready solution. Should say things like "You'll regret this in 6 months" or "This won't survive real load"
+   - Pragmatist: Cuts through the debate with a decisive, concrete recommendation. No fence-sitting.
 3. **Collect all 3 responses**
 4. **Synthesize into a final recommendation** with:
    - Where perspectives agree
