@@ -464,6 +464,17 @@ For reviewing a PR:
 - Lane 3: "Review for performance"
 - Synthesis: "Unified review with prioritized issues"
 
+### Automated Fusion (Advanced)
+
+The manual process works, but it's tedious. What if you could run a single command that:
+1. Spawns 3 parallel agents with different perspectives
+2. Collects all responses automatically
+3. Synthesizes into a final recommendation
+
+This is possible using Claude Code's Task tool and a custom slash command.
+
+**Want to build this?** See **[Bonus Lab: Automated Fusion](bonus-automated-fusion.md)** to create a reusable `/fusion` skill that automates this entire workflow.
+
 ---
 
 ## Retrospective Questions

@@ -124,3 +124,4 @@ git checkout -b thread/long/lab-6-add-jsdoc
 - [Lab 4: Fusion Thread](docs/lab-4-fusion-thread.md)
 - [Lab 5: Meta Thread](docs/lab-5-meta-thread.md)
 - [Lab 6: Long Thread](docs/lab-6-long-thread.md)
+- [Bonus: Automated Fusion](docs/bonus-automated-fusion.md)

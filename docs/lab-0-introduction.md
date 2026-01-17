@@ -49,6 +49,14 @@ This approach comes from Boris Cherny, creator of Claude Code at Anthropic. He r
 
 Each lab teaches one thread type with a hands-on exercise using this codebase.
 
+### Bonus Lab
+
+After completing the core 6 labs, an optional advanced lab is available:
+
+| Bonus Lab | What You'll Build | Time |
+|-----------|-------------------|------|
+| **[Automated Fusion](bonus-automated-fusion.md)** | A `/fusion` skill that automates multi-perspective analysis | 45 min |
+
 ---
 
 ## About This Training Repo
