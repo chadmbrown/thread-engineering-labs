@@ -308,65 +308,92 @@ async function checkLab4(): Promise<CheckResult[]> {
 
 /**
  * Lab 5: Meta Thread - Feature Decomposition
+ *
+ * Lab 5 is about PLANNING, not implementing. Students should create a thread map
+ * document that decomposes the notification feature into executable child threads.
  */
 async function checkLab5(): Promise<CheckResult[]> {
   const results: CheckResult[] = [];
-  const filePath = "docs/feature-notification-preferences.md";
+  const threadMapPath = "docs/thread-map-notification-preferences.md";
 
-  // Check 1: File exists
-  if (!existsSync(filePath)) {
-    results.push(failed(`File ${filePath} not found`));
+  // Check 1: Thread map document exists
+  if (!existsSync(threadMapPath)) {
+    results.push(failed(`Thread map document not found at ${threadMapPath}`));
+    results.push(
+      failed("Hint: Lab 5 produces a planning document, not code. Create the thread map file.")
+    );
     return results;
   }
-  results.push(passed(`File ${filePath} exists`));
+  results.push(passed("Thread map document exists"));
 
-  const content = readFileSync(filePath, "utf-8");
+  const content = readFileSync(threadMapPath, "utf-8");
 
-  // Check 2: Thread map section exists and has content
-  const threadMapMatch = content.match(/## Thread Map\s*\n+([\s\S]*?)$/);
-  const threadMapContent = threadMapMatch?.[1]?.trim() || "";
-
-  if (
-    threadMapContent.length < 100 ||
-    threadMapContent.includes("[Your decomposition") ||
-    threadMapContent === ""
-  ) {
-    results.push(failed("Thread Map section is empty or contains placeholder text"));
-  } else {
-    results.push(passed("Thread Map section has content"));
-  }
-
-  // Check 3: Has at least 4 threads
-  const threadIndicators = [
-    "Thread 1",
-    "Thread 2",
-    "Thread 3",
-    "Thread 4",
-    "### 1.",
-    "### 2.",
-    "### 3.",
-    "### 4.",
-    "1. ",
-    "2. ",
-    "3. ",
-    "4. ",
-  ];
-
-  let threadCount = 0;
-  for (let i = 1; i <= 7; i++) {
-    if (
-      content.includes(`Thread ${i}`) ||
-      content.includes(`### ${i}.`) ||
-      content.includes(`\n${i}. `)
-    ) {
-      threadCount++;
-    }
-  }
+  // Check 2: Has at least 4 threads (NP-1, NP-2, etc. or Thread 1, Thread 2, etc.)
+  const npThreadMatches = content.match(/NP-\d/g) || [];
+  const numberedThreadMatches = content.match(/###\s*(Thread\s+)?\d+[.:]/g) || [];
+  const threadCount = Math.max(
+    new Set(npThreadMatches).size,
+    new Set(numberedThreadMatches).size
+  );
 
   if (threadCount < 4) {
-    results.push(failed(`Only ${threadCount} threads identified (need at least 4)`));
+    results.push(failed(`Only ${threadCount} threads found (need at least 4)`));
   } else {
-    results.push(passed(`${threadCount} threads identified in decomposition`));
+    results.push(passed(`${threadCount} threads defined`));
+  }
+
+  // Check 3: Each thread has Definition of Done (DoD)
+  const hasDoD =
+    content.toLowerCase().includes("definition of done") ||
+    content.toLowerCase().includes("dod:") ||
+    content.includes("**DoD:**") ||
+    content.includes("- DoD:");
+
+  if (!hasDoD) {
+    results.push(failed("Missing Definition of Done (DoD) for threads"));
+  } else {
+    results.push(passed("Threads have Definition of Done"));
+  }
+
+  // Check 4: Dependencies documented
+  const hasDependencies =
+    content.toLowerCase().includes("dependencies") ||
+    content.toLowerCase().includes("depends on") ||
+    content.includes("**Dependencies:**");
+
+  if (!hasDependencies) {
+    results.push(failed("Dependencies not documented"));
+  } else {
+    results.push(passed("Dependencies documented"));
+  }
+
+  // Check 5: Execution order specified
+  const hasExecutionOrder =
+    content.toLowerCase().includes("execution order") ||
+    content.toLowerCase().includes("recommended sequence") ||
+    content.toLowerCase().includes("dependency graph") ||
+    content.toLowerCase().includes("parallelization");
+
+  if (!hasExecutionOrder) {
+    results.push(failed("Execution order not specified"));
+  } else {
+    results.push(passed("Execution order specified"));
+  }
+
+  // Warning check: Make sure no implementation code was created
+  const implementationFiles = [
+    "src/services/dispatcher.ts",
+    "src/services/preferences.ts",
+    "src/routes/notifications.ts",
+  ];
+
+  const implementedFiles = implementationFiles.filter((f) => existsSync(f));
+  if (implementedFiles.length > 0) {
+    results.push(
+      failed(
+        `WARNING: Found implementation files (${implementedFiles.join(", ")}). Lab 5 is about PLANNING, not implementing. Consider resetting.`
+      )
+    );
   }
 
   return results;
