@@ -136,7 +136,7 @@ Requirements:
 
 ## Your Task
 
-**IMPORTANT: This is a PLANNING exercise only. Do NOT implement any code. Your output is a thread map document — the actual implementation would happen later in separate sessions.**
+**IMPORTANT: This is a PLANNING exercise only. Do NOT implement any code.**
 
 Create a thread map with 4-7 child threads. For each thread provide:
 
@@ -155,6 +155,10 @@ Then provide:
 - **Parallelization opportunities**: Which can run simultaneously
 
 Make threads small enough to complete in one session but large enough to be meaningful.
+
+## Output
+
+**Write the thread map directly to `docs/thread-map-notification-preferences.md`.** This document IS the deliverable. After writing it, the lab is complete — do NOT ask to proceed with implementation.
 ```
 
 ---
