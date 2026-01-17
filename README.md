@@ -94,13 +94,12 @@ code docs/lab-0-introduction.md
 
 ## Verification
 
-Each lab has objective pass/fail verification:
+Each lab has objective pass/fail verification. Run after completing each lab:
 
 ```bash
 bun run verify 1  # Verify Lab 1 completion
 bun run verify 2  # Verify Lab 2 completion
-# ...
-bun run verify all  # Verify all labs
+bun run verify 6  # Verify Lab 6 completion
 ```
 
 ---

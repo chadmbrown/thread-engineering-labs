@@ -3,11 +3,12 @@
  * Lab Verification Script
  *
  * Verifies completion of Thread Engineering Labs.
+ * Run after completing each lab to confirm success.
  *
  * Usage:
  *   bun run verify 1     # Verify Lab 1
  *   bun run verify 2     # Verify Lab 2
- *   bun run verify all   # Verify all labs
+ *   bun run verify 6     # Verify Lab 6
  */
 
 import { execSync } from "node:child_process";
@@ -497,57 +498,26 @@ async function verifyLab(labNumber: string): Promise<boolean> {
   return allPassed;
 }
 
-async function verifyAll(): Promise<void> {
-  log("\n🧵 Thread Engineering Labs - Full Verification\n", YELLOW);
-
-  const results: Record<string, boolean> = {};
-
-  for (const labNumber of Object.keys(labChecks)) {
-    results[labNumber] = await verifyLab(labNumber);
-  }
-
-  console.log("");
-  log("═══════════════════════════════════════════════════════", YELLOW);
-  log("  Summary", YELLOW);
-  log("═══════════════════════════════════════════════════════", YELLOW);
-  console.log("");
-
-  let passCount = 0;
-  for (const [lab, passed] of Object.entries(results)) {
-    const status = passed ? "✅ PASS" : "❌ FAIL";
-    const color = passed ? GREEN : RED;
-    log(`  Lab ${lab}: ${status}`, color);
-    if (passed) passCount++;
-  }
-
-  console.log("");
-  log(
-    `  Total: ${passCount}/${Object.keys(results).length} labs passed`,
-    passCount === 6 ? GREEN : YELLOW
-  );
-  console.log("");
-}
-
 // Main
 const arg = process.argv[2];
 
 if (!arg) {
-  log("\nUsage: bun run verify <lab-number|all>", YELLOW);
+  log("\nUsage: bun run verify <lab-number>", YELLOW);
   log("\nExamples:", RESET);
   log("  bun run verify 1      # Verify Lab 1", RESET);
   log("  bun run verify 2      # Verify Lab 2", RESET);
-  log("  bun run verify all    # Verify all labs", RESET);
+  log("  bun run verify 6      # Verify Lab 6", RESET);
+  console.log("");
+  log("Verify each lab individually after completing it.", RESET);
   console.log("");
   process.exit(1);
 }
 
-if (arg === "all") {
-  await verifyAll();
-} else if (labChecks[arg]) {
+if (labChecks[arg]) {
   const passed = await verifyLab(arg);
   process.exit(passed ? 0 : 1);
 } else {
   log(`Unknown lab: ${arg}`, RED);
-  log("Valid options: 1, 2, 3, 4, 5, 6, all", RESET);
+  log("Valid options: 1, 2, 3, 4, 5, 6", RESET);
   process.exit(1);
 }

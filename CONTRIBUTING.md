@@ -35,7 +35,7 @@ If instructions were unclear:
 
 Finished all 6 labs? Share your experience in [Completions](https://github.com/chadmbrown/thread-engineering-labs/discussions/categories/completions):
 
-- Verification output (`bun run verify all`)
+- Which labs were most valuable
 - What you learned
 - How you plan to use Thread-Based Engineering
 

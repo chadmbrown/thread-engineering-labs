@@ -322,15 +322,19 @@ You've learned the patterns. Now automate them.
 
 ## Certification
 
-Run the full verification suite:
+**Congratulations!** You've completed all 6 Thread Engineering Labs.
 
-```bash
-bun run verify all
-```
+You now have hands-on experience with:
+- **Base Threads** for focused single tasks
+- **Parallel Threads** for independent concurrent work
+- **Chained Threads** for risky changes with checkpoints
+- **Fusion Threads** for multi-perspective decisions
+- **Meta Threads** for decomposing large work
+- **Long Threads** for mechanical automation
 
-If all 6 labs pass, you've completed Thread-Based Engineering training.
+Each pattern you learned verified with `bun run verify <n>` as you completed it. That's the real test — applying patterns to working code.
 
-Share your completion in the GitHub Discussions!
+**Share your completion** in the [GitHub Discussions](https://github.com/chadmbrown/thread-engineering-labs/discussions)!
 
 ---
 

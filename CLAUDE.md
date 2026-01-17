@@ -68,7 +68,6 @@ bun run typecheck     # TypeScript type checking
 bun run lint          # Lint with Biome
 bun run format        # Format with Biome
 bun run verify <n>    # Verify lab N completion (1-6)
-bun run verify all    # Verify all labs
 ```
 
 ## Lab Verification
