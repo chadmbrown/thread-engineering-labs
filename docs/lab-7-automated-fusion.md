@@ -125,90 +125,67 @@ claude
 
 ## Building the Skill
 
-### Step 1: Create the Slash Command
+You've spent 6 labs learning to work with Claude. Now use that skill — prompt Claude to BUILD the `/fusion` command for you.
 
-Create `.claude/commands/fusion.md`:
-
-```markdown
----
-description: Run automated fusion analysis with multiple perspectives
----
-
-# Automated Fusion Analysis
-
-You are orchestrating a Fusion Thread — gathering multiple perspectives on a decision and synthesizing them into a recommendation.
-
-## The Question
-$ARGUMENTS
-
-## Your Process
-
-### Phase 1: Spawn Perspective Agents
-
-Launch exactly 3 Task agents IN PARALLEL (in a single message with multiple tool calls). Each agent should analyze the question from a different perspective:
-
-**Agent 1 - Simplicity Advocate:**
-- Prompt: "Analyze this decision and argue for the SIMPLEST solution that could work. Question: [THE QUESTION]. Focus on: minimal dependencies, ease of understanding, fast implementation. Provide a clear recommendation with rationale."
-
-**Agent 2 - Scale Advocate:**
-- Prompt: "Analyze this decision and argue for the most SCALABLE, production-ready solution. Question: [THE QUESTION]. Focus on: future growth, maintainability, industry best practices. Provide a clear recommendation with rationale."
-
-**Agent 3 - Pragmatist:**
-- Prompt: "Analyze this decision by weighing ALL trade-offs objectively. Question: [THE QUESTION]. Consider: current constraints, team capabilities, timeline, actual requirements. Provide a balanced recommendation."
-
-Use subagent_type: "general-purpose" for all three agents.
-
-### Phase 2: Collect Responses
-
-Wait for all 3 agents to complete. Note their recommendations.
-
-### Phase 3: Synthesize
-
-After receiving all perspectives, provide a synthesis:
-
-1. **Where they agree:** Common ground across perspectives
-2. **Where they disagree:** Key points of contention
-3. **Merged recommendation:** ONE clear choice that incorporates the best insights
-4. **Rationale:** Why this recommendation balances the perspectives
-5. **Confidence:** High / Medium / Low based on consensus level
-6. **Action items:** Concrete next steps (2-4 items)
-
-## Output Format
+### The Prompt
 
 ```
-## Fusion Analysis: [Question Summary]
+Create a slash command file at `.claude/commands/fusion.md` that automates multi-perspective analysis.
 
-### Perspective 1: Simplicity Advocate
-[Summary of Agent 1's recommendation]
+## What the command should do
 
-### Perspective 2: Scale Advocate
-[Summary of Agent 2's recommendation]
+When I run `/fusion "some question"`, it should:
 
-### Perspective 3: Pragmatist
-[Summary of Agent 3's recommendation]
+1. **Spawn 3 Task agents in parallel** (using the Task tool with subagent_type "general-purpose")
+2. **Each agent analyzes from a different perspective:**
+   - Simplicity Advocate: Argues for the simplest solution
+   - Scale Advocate: Argues for the most scalable, production-ready solution
+   - Pragmatist: Weighs all trade-offs objectively
+3. **Collect all 3 responses**
+4. **Synthesize into a final recommendation** with:
+   - Where perspectives agree
+   - Where they disagree
+   - One clear recommendation
+   - Rationale
+   - Confidence level (High/Medium/Low)
+   - 2-4 concrete next steps
 
----
+## Technical requirements
 
-### Synthesis
+- The file needs YAML frontmatter with a description
+- Use $ARGUMENTS to capture the question passed to the command
+- Agents MUST run in parallel (single message with multiple Task tool calls)
+- Each perspective should be clearly labeled in the output
 
-**Agreement:** [What all perspectives agreed on]
+## Output format
 
-**Disagreement:** [Key tensions between perspectives]
-
-**Recommendation:** [Your synthesized recommendation]
-
-**Rationale:** [Why this is the best path forward]
-
-**Confidence:** [High/Medium/Low]
-
-**Next Steps:**
-1. [Action item]
-2. [Action item]
-3. [Action item]
+The synthesis should be well-structured and scannable — use headers, bold labels, and a clear recommendation section.
 ```
 
-Begin by spawning the three perspective agents in parallel.
+### Review the Generated File
+
+After Claude creates the file, review it:
+
+```bash
+cat .claude/commands/fusion.md
 ```
+
+**Check for these key elements:**
+- [ ] YAML frontmatter with `description:`
+- [ ] `$ARGUMENTS` captures the question
+- [ ] Instructions to spawn 3 Task agents in parallel
+- [ ] Three distinct perspectives defined
+- [ ] Synthesis phase with clear output format
+
+### Iterate if Needed
+
+If something's missing or unclear, tell Claude:
+
+```
+The fusion command is missing [X]. Update it to include [specific requirement].
+```
+
+This is how you'll build all your custom commands — describe what you want, review, refine.
 
 ---
 
