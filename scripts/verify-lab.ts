@@ -430,12 +430,12 @@ async function checkLab6(): Promise<CheckResult[]> {
     }
   }
 
-  // Check that lint passes
+  // Check that lint passes on src/utils/ only (other files have intentional issues for other labs)
   try {
-    execSync(`${BUN} run lint`, { stdio: "pipe", encoding: "utf-8" });
-    results.push(passed("Lint passes"));
+    execSync(`bunx biome check src/utils/`, { stdio: "pipe", encoding: "utf-8" });
+    results.push(passed("Lint passes for src/utils/"));
   } catch {
-    results.push(failed("Lint fails - check for issues"));
+    results.push(failed("Lint fails in src/utils/ - check for issues"));
   }
 
   return results;
