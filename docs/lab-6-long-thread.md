@@ -112,6 +112,8 @@ Type `/permissions` directly in Claude Code (this is a slash command you type, n
 
 ## The Prompt
 
+**Before pasting:** Press `Shift+Tab` to enable auto-accept mode. This lets Claude work autonomously through all files without prompting you for each edit — the essence of a Long Thread.
+
 ```
 I need you to run a long, mechanical task. Follow these rules carefully.
 
