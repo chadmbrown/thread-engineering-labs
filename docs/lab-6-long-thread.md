@@ -180,6 +180,12 @@ Begin with `src/utils/validators.ts`.
 
 ## Walkthrough
 
+After pasting the prompt, Claude works through the files autonomously. **You observe** — this is the "Long Thread" pattern. You only intervene if Claude hits a stop condition.
+
+### What You'll See
+
+**Steps 1-4** show example output as Claude processes each file. **Step 5** is your action after Claude finishes.
+
 ### Step 1: Claude processes first file
 
 > **Processing: `src/utils/validators.ts`**
