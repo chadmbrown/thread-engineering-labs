@@ -304,9 +304,11 @@ You've now learned all 6 thread types:
 3. **Share:** Teach teammates the patterns that helped you most
 4. **Contribute:** Found an issue or improvement? Open a GitHub issue or PR
 
-### Want More?
+### One More Lab
 
-**[Bonus Lab: Automated Fusion](bonus-automated-fusion.md)** — Build a `/fusion` skill that automates multi-perspective analysis into a single command. Learn Task tool orchestration, parallel agents, and slash command creation.
+You've learned the patterns. Now automate them.
+
+**[Lab 7: Automated Fusion](lab-7-automated-fusion.md)** — Build a `/fusion` skill that turns 15-minute multi-perspective analysis into a 30-second command. This is where it all comes together.
 
 ---
 

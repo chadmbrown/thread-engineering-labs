@@ -49,13 +49,15 @@ This approach comes from Boris Cherny, creator of Claude Code at Anthropic. He r
 
 Each lab teaches one thread type with a hands-on exercise using this codebase.
 
-### Bonus Lab
+### Lab 7: The Power Move
 
-After completing the core 6 labs, an optional advanced lab is available:
+After mastering the core 6 patterns, Lab 7 teaches you to **automate** them:
 
-| Bonus Lab | What You'll Build | Time |
-|-----------|-------------------|------|
-| **[Automated Fusion](bonus-automated-fusion.md)** | A `/fusion` skill that automates multi-perspective analysis | 45 min |
+| Lab | What You'll Build | Time |
+|-----|-------------------|------|
+| **[Lab 7: Automated Fusion](lab-7-automated-fusion.md)** | A `/fusion` skill that runs multi-perspective analysis in one command | 45 min |
+
+Lab 7 turns a 15-minute manual process into a 30-second command. This is where the methodology clicks.
 
 ---
 

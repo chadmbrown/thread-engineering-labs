@@ -464,16 +464,28 @@ For reviewing a PR:
 - Lane 3: "Review for performance"
 - Synthesis: "Unified review with prioritized issues"
 
-### Automated Fusion (Advanced)
+### Automated Fusion (The Power Move)
 
-The manual process works, but it's tedious. What if you could run a single command that:
-1. Spawns 3 parallel agents with different perspectives
-2. Collects all responses automatically
-3. Synthesizes into a final recommendation
+The manual process works, but imagine this instead:
 
-This is possible using Claude Code's Task tool and a custom slash command.
+```
+You: /fusion "Should we use SQLite or PostgreSQL?"
 
-**Want to build this?** See **[Bonus Lab: Automated Fusion](bonus-automated-fusion.md)** to create a reusable `/fusion` skill that automates this entire workflow.
+Claude: Spawning 3 perspective agents...
+        ✓ Simplicity Advocate: SQLite because...
+        ✓ Scale Advocate: PostgreSQL because...
+        ✓ Pragmatist: Depends on requirements...
+
+        Synthesizing...
+
+        **Recommendation:** SQLite now, PostgreSQL migration path ready.
+```
+
+One command. Three perspectives. Synthesized decision. **30 seconds instead of 15 minutes.**
+
+This is the kind of automation that separates "using AI" from "multiplying yourself with AI."
+
+**Ready to build this?** In **[Lab 7: Automated Fusion](lab-7-automated-fusion.md)**, you'll create a reusable `/fusion` skill that turns this entire workflow into a single command. You'll learn Task tool orchestration, parallel agents, and how to build skills you can take to any project.
 
 ---
 

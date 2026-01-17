@@ -1,8 +1,8 @@
-# Bonus Lab: Automated Fusion
+# Lab 7: Automated Fusion
 
 **Time:** 45 minutes
 **Difficulty:** Advanced
-**Prerequisites:** Lab 4 (Fusion Thread), Lab 6 (Long Thread)
+**Prerequisites:** Lab 4 (Fusion Thread)
 
 ---
 
