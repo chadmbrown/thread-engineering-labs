@@ -159,7 +159,9 @@ Make threads small enough to complete in one session but large enough to be mean
 
 ## Walkthrough
 
-Claude produces a thread map:
+### What You Should See
+
+After pasting the prompt, Claude produces a thread map. Here's an **example** — yours may look different based on how Claude interprets the requirements:
 
 > **Thread Map: Notification Preferences**
 >
@@ -246,6 +248,8 @@ Claude produces a thread map:
 > **Parallelization:**
 > - NP-2 || NP-3 (both depend only on NP-1)
 > - NP-4 || NP-5 (different dependencies, no file overlap)
+
+**Your output doesn't need to match this exactly.** The goal is 4-7 well-defined threads with clear scope, dependencies, and definitions of done.
 
 ---
 
