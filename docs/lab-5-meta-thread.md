@@ -136,6 +136,8 @@ Requirements:
 
 ## Your Task
 
+**IMPORTANT: This is a PLANNING exercise only. Do NOT implement any code. Your output is a thread map document — the actual implementation would happen later in separate sessions.**
+
 Create a thread map with 4-7 child threads. For each thread provide:
 
 1. **Thread ID**: Unique identifier (NP-1, NP-2, etc.)
