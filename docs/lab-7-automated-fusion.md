@@ -11,7 +11,7 @@
 A `/fusion` slash command that automates the entire Fusion Thread workflow:
 
 ```
-You: /fusion "Should we use SQLite or PostgreSQL for this project?"
+You: /fusion Should we use SQLite or PostgreSQL for this project
 
 Claude: Spawning 3 perspective agents...
 
@@ -201,22 +201,10 @@ This is how you'll build all your custom commands — describe what you want, re
 
 ## Test Your Skill
 
-**Important:** New slash commands aren't loaded until you restart Claude Code. Exit and restart:
-
-```bash
-# Exit current session
-/exit
-
-# Restart Claude Code
-claude
-```
-
-Now the `/fusion` command will be available.
-
 ### Test 1: Technical Decision
 
 ```
-/fusion Should we use REST or GraphQL for our new API?
+/fusion Should we use REST or GraphQL for our new API
 ```
 
 Expected: Three perspectives analyzing REST vs GraphQL, followed by a synthesized recommendation.
@@ -224,13 +212,13 @@ Expected: Three perspectives analyzing REST vs GraphQL, followed by a synthesize
 ### Test 2: Architecture Decision
 
 ```
-/fusion Should we use a monorepo or separate repositories for our microservices?
+/fusion Should we use a monorepo or separate repositories for our microservices
 ```
 
 ### Test 3: Process Decision
 
 ```
-/fusion Should we adopt trunk-based development or keep feature branches?
+/fusion Should we adopt trunk-based development or keep feature branches
 ```
 
 ---
@@ -239,7 +227,7 @@ Expected: Three perspectives analyzing REST vs GraphQL, followed by a synthesize
 
 ### What You Should See
 
-After running `/fusion "Should we use SQLite or PostgreSQL?"`:
+After running `/fusion Should we use SQLite or PostgreSQL`:
 
 **Phase 1:** Claude spawns 3 Task agents:
 > Spawning perspective agents in parallel...
@@ -294,7 +282,7 @@ cat .claude/commands/fusion.md
 
 # 2. Test the skill
 claude
-# Then run: /fusion "Should we use TypeScript or JavaScript for this project?"
+# Then run: /fusion Should we use TypeScript or JavaScript for this project
 
 # 3. Verify you got 3 perspectives + synthesis
 ```
@@ -309,12 +297,6 @@ claude
 ---
 
 ## Troubleshooting
-
-### "Unknown skill: fusion" or command not recognized
-
-**Why:** New slash commands aren't loaded until you restart Claude Code.
-
-**Fix:** Exit the current session (`/exit`) and start a new one (`claude`). The command will be available after restart.
 
 ### "Agents aren't running in parallel"
 
