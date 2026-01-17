@@ -1,23 +1,27 @@
 # Lab 4: Fusion Thread
 
-**Time:** 30-45 minutes  
-**Difficulty:** Intermediate  
+**Time:** 20 minutes
+**Difficulty:** Intermediate
 **Prerequisites:** Lab 1 (Base Thread)
 
 ---
 
 ## What is a Fusion Thread?
 
-A Fusion Thread gathers multiple perspectives on a hard problem, then synthesizes them into a clear decision. Instead of asking one Claude session for an answer, you run 2-4 parallel sessions with the same prompt, optionally add external models (Gemini, GPT), and then have a fresh Claude session analyze all responses.
+A Fusion Thread gathers multiple perspectives on a hard problem, then synthesizes them into a clear decision. Instead of accepting the first answer, you force different viewpoints to surface trade-offs you might otherwise miss.
 
-It's like getting opinions from multiple experts, then having a senior architect synthesize the recommendation.
+It's like getting opinions from multiple experts with different priorities, then having a senior architect make the final call.
+
+**This lab teaches the simplest form: the Virtual Roundtable** — one prompt that simulates multiple expert personas. It's fast, effective, and captures most of the value.
+
+Want to go deeper? The [Reference section](#reference-optional) covers manual multi-session fusion for high-stakes decisions where you want true model independence. And when you're ready to let AI do all the work, **[Lab 7: Automated Fusion](lab-7-automated-fusion.md)** teaches you to build a `/fusion` skill that spawns real parallel agents with a single command.
 
 ---
 
 ## Why Fusion Threads Matter
 
 **The problem with single-perspective answers:**
-- Claude's first answer might miss trade-offs
+- First answer might miss trade-offs
 - Confirmation bias (you asked, it agrees)
 - No exposure to alternative approaches
 - Hard to know if you're missing something
@@ -53,9 +57,9 @@ Use Fusion Threads when the decision matters and isn't obvious.
 
 ## The Lab 4 Decision
 
-The codebase needs session storage. There's a decision document at `docs/architecture-decision.md` outlining four options:
+The codebase needs session storage. There's a decision document at `docs/architecture-decision.md` outlining options:
 
-1. **In-memory store** — Map in the app
+1. **In-memory store** — Simple Map in the app
 2. **Redis** — External service
 3. **SQLite** — File-based via Bun
 4. **JWT-only** — Stateless, no server storage
@@ -64,36 +68,40 @@ Your task: Use a Fusion Thread to decide which approach is best for this trainin
 
 ---
 
-## Fusion Sources
+## The Virtual Roundtable
 
-### Primary Sources: Multiple Claude Sessions
+Instead of juggling multiple terminal windows and copy-pasting between sessions, we'll use a **Virtual Roundtable** — one prompt that forces Claude to simulate multiple expert perspectives, then synthesize.
 
-Run the same prompt in 2-3 Claude sessions (terminal + web). Each session has fresh context and may emphasize different factors.
+This captures 90% of the value with 10% of the overhead.
 
-### Secondary Sources: External Models (Optional)
+### How It Works
 
-For more diversity, add:
-- **Gemini** — Often emphasizes different trade-offs
-- **GPT-4** — Different training, different blind spots
-- **Codex/Copilot** — Code-focused perspective
+```
+┌─────────────────────────────────────┐
+│      Single Prompt Entry            │
+│  "Which session storage approach?"  │
+└─────────────────┬───────────────────┘
+                  │
+                  ▼
+┌─────────────────────────────────────┐
+│     Expert A: The Pragmatist        │
+│     "Stability and simplicity"      │
+├─────────────────────────────────────┤
+│     Expert B: The Innovator         │
+│     "Scalability and modern"        │
+├─────────────────────────────────────┤
+│     Expert C: Devil's Advocate      │
+│     "What could go wrong?"          │
+└─────────────────┬───────────────────┘
+                  │
+                  ▼
+┌─────────────────────────────────────┐
+│     Principal Architect             │
+│     Synthesize → Final Decision     │
+└─────────────────────────────────────┘
+```
 
-External models add diversity but may hallucinate about your specific codebase. Weight Claude higher for repo-specific questions.
-
----
-
-## The Two-Stage Process
-
-### Stage 1: Gathering
-
-Run the same prompt in multiple lanes. Collect independent responses.
-
-### Stage 2: Synthesis
-
-Give all responses to a fresh Claude session. Ask for:
-- Where do they agree?
-- Where do they disagree?
-- What's the best recommendation?
-- What's the implementation plan?
+The key insight: **Named personas with explicit priorities** force diverse viewpoints even from a single model.
 
 ---
 
@@ -105,21 +113,7 @@ Give all responses to a fresh Claude session. Ask for:
 git checkout -b thread/fusion/lab-4-architecture-decision
 ```
 
-### 2. Prepare Your Lanes
-
-You'll need 3-4 perspectives. Options:
-
-**Option A: All Claude (simplest)**
-- Terminal 1: Claude Code
-- Terminal 2: Claude Code (different directory)
-- Browser: claude.ai/chat
-
-**Option B: Claude + External (more diversity)**
-- Terminal: Claude Code
-- Browser 1: claude.ai/chat
-- Browser 2: Gemini or ChatGPT
-
-### 3. Read the Decision Context
+### 2. Read the decision context
 
 ```bash
 cat docs/architecture-decision.md
@@ -127,17 +121,22 @@ cat docs/architecture-decision.md
 
 Understand the problem before gathering perspectives.
 
+### 3. Start Claude Code
+
+```bash
+claude
+```
+
 ---
 
-## Stage 1: The Gathering Prompt
+## The Prompt
 
-Use this EXACT prompt in all lanes:
+Copy and paste this entire prompt:
 
 ```
-I need your analysis on an architecture decision. Answer independently — don't hedge or say "it depends" without committing to a recommendation.
+I need a "Fusion Thread" analysis to decide on session storage for a Hono/TypeScript training application.
 
 ## Context
-We need to add user session management to a Hono/TypeScript training application. The codebase is:
 - Runtime: Bun
 - Framework: Hono
 - Purpose: Training repo for Claude Code workflows
@@ -145,230 +144,107 @@ We need to add user session management to a Hono/TypeScript training application
 - Constraint: Should work without external dependencies if possible
 
 ## Options
+1. **In-memory Map** — Simple, lost on restart, no dependencies
+2. **Redis** — Persistent, scalable, requires Docker/cloud
+3. **SQLite via Bun** — File-based, persistent, Bun has built-in support
+4. **JWT-only (stateless)** — No server storage, can't invalidate sessions
 
-1. **In-memory Map**
-   - Simple Map object in the app
-   - Lost on restart
-   - No dependencies
+## Your Task: Virtual Roundtable
 
-2. **Redis**
-   - External Redis service
-   - Persistent, scalable
-   - Requires Docker or cloud service
+Simulate 3 expert personas analyzing this decision, then synthesize.
 
-3. **SQLite via Bun**
-   - File-based database
-   - Persistent, no external service
-   - Bun has built-in SQLite support
+### Step 1: The Roundtable
 
-4. **JWT-only (stateless)**
-   - All session data in the token
-   - No server storage needed
-   - Can't invalidate individual sessions
+Each expert must provide independently:
+- **Recommendation** (one clear choice)
+- **Key argument** (why this is right)
+- **Trade-off acknowledged** (what you're giving up)
+- **Risk** (what could go wrong)
 
-## Your Task
+**Expert A (The Pragmatist):**
+Prioritize stability, minimal complexity, proven patterns. Prefer boring solutions that just work.
 
-Provide:
+**Expert B (The Innovator):**
+Prioritize teaching value, modern patterns, real-world applicability. What would a production app use?
 
-1. **Recommendation**: Which option and why (one clear choice)
-2. **Trade-offs**: What you're giving up with this choice
-3. **Risks**: What could go wrong
-4. **Alternatives considered**: Why you rejected the others
-5. **Confidence level**: High / Medium / Low and why
+**Expert C (The Devil's Advocate):**
+Challenge the other experts. Find edge cases, gotchas, and risks they missed. What's the contrarian take?
 
-Be direct. Take a position.
+### Step 2: Synthesis
+
+As a Principal Architect, review all three perspectives:
+
+1. **Where they agree** — Common ground
+2. **Where they disagree** — Key tensions
+3. **Strongest point from each** — Best insights to keep
+4. **Final Recommendation** — ONE clear choice
+5. **Rationale** — Why this balances the perspectives
+6. **Implementation Plan** — 3-5 concrete next steps
+
+Be decisive. No "it depends" without a concrete recommendation.
 ```
 
 ---
 
-## Stage 1: Walkthrough
+## Walkthrough
 
-### Run the prompt in each lane
+### What You Should See
 
-**Lane 1 (Claude Code):**
-> **Recommendation: SQLite via Bun**
-> 
-> SQLite is the best fit because:
-> - Persistent without external services
-> - Bun has native SQLite support (`bun:sqlite`)
-> - Perfect for training context — real database patterns without Docker
-> - Supports session invalidation (unlike JWT-only)
+After pasting the prompt, Claude produces a structured analysis:
+
+**The Roundtable:**
+
+> **Expert A (The Pragmatist):**
+> - Recommendation: In-memory Map
+> - Key argument: Zero dependencies, instant setup, perfect for training
+> - Trade-off: Lost on restart
+> - Risk: Students might think this is production-appropriate
 >
-> **Trade-offs:** Slightly more setup than in-memory
-> **Risks:** File permissions, concurrent write limits
-> **Confidence:** High
-
-**Lane 2 (Claude Web):**
-> **Recommendation: In-memory Map with optional persistence**
+> **Expert B (The Innovator):**
+> - Recommendation: SQLite via Bun
+> - Key argument: Teaches real database patterns without Docker overhead
+> - Trade-off: Slightly more setup than in-memory
+> - Risk: File permissions on different systems
 >
-> For a training repo, simplicity wins:
-> - Zero dependencies
-> - Easy to understand
-> - Students focus on workflow, not infrastructure
-> - Add JSON file persistence if needed later
+> **Expert C (The Devil's Advocate):**
+> - Recommendation: Challenge both — what about JWT-only?
+> - Key argument: Stateless is the modern pattern, no storage complexity
+> - Trade-off: Can't invalidate sessions (security concern for auth labs)
+> - Risk: A and B are overcomplicating a training repo
+
+**The Synthesis:**
+
+> **Where they agree:** External services (Redis) are overkill for training
 >
-> **Trade-offs:** Lost on restart
-> **Risks:** Memory leaks if sessions aren't cleaned
-> **Confidence:** Medium-High
-
-**Lane 3 (Gemini):**
-> **Recommendation: JWT-only**
+> **Where they disagree:** Persistence vs simplicity; teaching value vs minimalism
 >
-> Stateless is cleanest:
-> - No server storage complexity
-> - Scales infinitely
-> - Simpler code
-> - Modern approach
+> **Strongest points:**
+> - Pragmatist: Simplicity matters for learning
+> - Innovator: Real patterns are more valuable than toy examples
+> - Devil's Advocate: Don't overcomplicate training
 >
-> **Trade-offs:** Can't invalidate sessions server-side
-> **Risks:** Token size limits, can't log out users
-> **Confidence:** Medium
-
-Now you have three different recommendations with different reasoning.
-
----
-
-## Stage 2: The Synthesis Prompt
-
-Open a **fresh Claude session** (terminal or web). Paste:
-
-```
-I gathered multiple perspectives on an architecture decision. Synthesize them into a final recommendation.
-
-## The Question
-Which session storage approach for a Hono/TypeScript training application?
-
-## Perspective 1 (Claude Terminal)
-**Recommendation: SQLite via Bun**
-- Persistent without external services
-- Bun has native SQLite support
-- Real database patterns without Docker
-- Supports session invalidation
-
-Trade-offs: More setup than in-memory
-Risks: File permissions, concurrent writes
-Confidence: High
-
-## Perspective 2 (Claude Web)
-**Recommendation: In-memory Map**
-- Zero dependencies
-- Easy to understand
-- Students focus on workflow, not infrastructure
-
-Trade-offs: Lost on restart
-Risks: Memory leaks
-Confidence: Medium-High
-
-## Perspective 3 (Gemini)
-**Recommendation: JWT-only**
-- No server storage complexity
-- Scales infinitely
-- Modern approach
-
-Trade-offs: Can't invalidate sessions
-Risks: Token size, no logout capability
-Confidence: Medium
-
-## Your Task
-
-Analyze these perspectives and provide:
-
-1. **Where they agree**: Common ground across all three
-2. **Where they disagree**: Key points of contention
-3. **Best ideas from each**: What's worth keeping
-4. **Gaps**: What did they all miss?
-5. **Final recommendation**: ONE clear choice with full rationale
-6. **Implementation plan**: Concrete next steps (3-5 items)
-7. **Risk mitigations**: How to address the main risks
-
-Be decisive. Don't waffle.
-```
-
----
-
-## Stage 2: Walkthrough
-
-Claude synthesizes:
-
-> **Synthesis**
+> **Final Recommendation:** SQLite via Bun
 >
-> **Where they agree:**
-> - External services (Redis) are overkill for a training repo
-> - Simplicity matters for learning context
-> - Session invalidation is a nice-to-have
->
-> **Where they disagree:**
-> - Persistence: SQLite and JWT-only have it; in-memory doesn't
-> - Complexity: In-memory is simplest; SQLite adds database concepts
-> - Statefulness: JWT is stateless; others are stateful
->
-> **Best ideas from each:**
-> - SQLite: Real database patterns are valuable for training
-> - In-memory: Simplicity wins for learning
-> - JWT-only: Stateless is a legitimate modern pattern
->
-> **Gaps:**
-> - None addressed what happens in Lab exercises specifically
-> - None considered that students might need to see session data (debugging)
->
-> **Final Recommendation: SQLite via Bun**
->
-> **Rationale:**
-> For a training repo teaching Claude Code workflows, SQLite is optimal because:
-> 1. Zero external dependencies (no Docker/Redis)
-> 2. Bun's native support makes it trivial (`import { Database } from 'bun:sqlite'`)
-> 3. Teaches real patterns (schema, queries, migrations)
-> 4. Students can inspect session data (better debugging)
-> 5. Survives restart (persistent lab state)
->
-> In-memory was close, but persistence helps when students take breaks or restart.
-> JWT-only was rejected because session invalidation may be needed for auth labs.
+> **Rationale:** Best balance — teaches real patterns (queries, schema) without external dependencies. Bun's native support makes it nearly as simple as in-memory, but students learn transferable skills.
 >
 > **Implementation Plan:**
 > 1. Create `src/db/index.ts` with Bun SQLite setup
 > 2. Create sessions table schema
 > 3. Add `createSession`, `getSession`, `deleteSession` functions
 > 4. Integrate with auth middleware
-> 5. Add cleanup job for expired sessions
->
-> **Risk Mitigations:**
-> - File permissions: Document in README, use standard `./data/` directory
-> - Concurrent writes: Use WAL mode, add connection pooling
-> - Learning curve: Provide example queries in CLAUDE.md
+> 5. Document setup in README
 
 ---
 
-## Document the Decision
+## Save the Decision
 
-Save the synthesis output to `docs/architecture-decision.md`:
+Update `docs/architecture-decision.md` with the synthesis output. Ask Claude:
 
-```markdown
-# Architecture Decision: Session Storage
-
-**Date:** [Today]
-**Decision:** SQLite via Bun
-**Status:** Accepted
-
-## Context
-[Original problem statement]
-
-## Options Considered
-[List all four options]
-
-## Analysis
-[Summary of perspectives gathered]
-
-## Decision
-SQLite via Bun native support.
-
-## Rationale
-[Key points from synthesis]
-
-## Implementation Plan
-[Concrete steps]
-
-## Consequences
-[Trade-offs accepted]
+```
+Update docs/architecture-decision.md with this decision. Include:
+- Decision: SQLite via Bun
+- Status: Accepted
+- Context, options considered, rationale, and implementation plan
 ```
 
 ---
@@ -400,73 +276,125 @@ Continue to **[Lab 5: Meta Thread](lab-5-meta-thread.md)** to learn how to decom
 
 ## Reference (Optional)
 
-The sections below are for troubleshooting, deeper learning, and advanced variations. Skip if you're ready for Lab 5.
+The sections below cover deeper techniques, manual multi-session fusion, and automation. Skip if you're ready for Lab 5.
 
 ---
 
-## Success Criteria
+## Going Deeper: Manual Multi-Session Fusion
 
-Your Fusion Thread succeeded if:
+The Virtual Roundtable simulates perspectives in one context. For **high-stakes decisions**, you may want true independence — actual separate sessions or different models.
 
-- [ ] You gathered 3+ genuinely different perspectives
-- [ ] Synthesis identified both agreements and disagreements
-- [ ] Final recommendation is clear and decisive
-- [ ] Rationale explains why alternatives were rejected
-- [ ] Implementation plan is concrete (not vague)
-- [ ] Decision is documented
+### When to Use Manual Multi-Session
 
----
+- Decisions with major consequences (architecture, security, infrastructure)
+- When you suspect your framing might bias the response
+- When you want to compare Claude vs. Gemini vs. GPT perspectives
 
-## Failure Patterns
+### The Process
 
-### "All perspectives gave the same answer"
+**Stage 1: Gathering (3 separate sessions)**
 
-**Why:** Not enough diversity in sources.
+Open 3 sessions (Terminal Claude, Web Claude, and/or external models). Paste the same gathering prompt in each:
 
-**Fix:** Add external models (Gemini, GPT). Or re-prompt with "argue for [alternative]" to force different perspectives.
+```
+I need your analysis on an architecture decision. Answer independently — don't hedge or say "it depends" without committing to a recommendation.
 
-### "Synthesis was wishy-washy"
+## Context
+[Same context as above]
 
-**Why:** Synthesis prompt didn't demand decisiveness.
+## Options
+[Same options as above]
 
-**Fix:** Add to prompt: "You MUST pick one option. 'It depends' is not acceptable."
+## Provide:
+1. **Recommendation**: Which option and why (one clear choice)
+2. **Trade-offs**: What you're giving up
+3. **Risks**: What could go wrong
+4. **Confidence level**: High / Medium / Low
 
-### "External models hallucinated about the codebase"
+Be direct. Take a position.
+```
 
-**Why:** They don't have repo context.
+**Stage 2: Synthesis (fresh session)**
 
-**Fix:** Weight Claude perspectives higher for codebase-specific questions. Use external models for general architecture trade-offs.
+Open a new session. Paste all 3 responses and ask:
+
+```
+I gathered multiple perspectives on an architecture decision. Synthesize them.
+
+## Perspective 1
+[Paste response]
+
+## Perspective 2
+[Paste response]
+
+## Perspective 3
+[Paste response]
+
+## Provide:
+1. Where they agree
+2. Where they disagree
+3. Best ideas from each
+4. Final recommendation (ONE choice)
+5. Implementation plan
+```
+
+This takes 15-20 minutes but provides true model independence.
 
 ---
 
 ## Variations
 
-### Quick Fusion (10-15 min)
+### Quick Fusion (5 min)
 
-For simpler decisions, use just 2 Claude sessions:
-- Terminal: One perspective
-- Web: Force a different take ("Argue for [alternative]")
-- Synthesize yourself (no third session)
+For simpler decisions, use just 2 perspectives:
+
+```
+Analyze this decision from two opposing viewpoints:
+
+**View A:** Argue for the SIMPLEST solution
+**View B:** Argue for the most SCALABLE solution
+
+Then synthesize: which is right for THIS specific context?
+
+Decision: [Your question]
+```
 
 ### Debugging Fusion
 
-For mystery bugs:
-- Lane 1: "Here's the bug. What's your hypothesis?"
-- Lane 2: Same prompt
-- Lane 3: Same prompt
-- Synthesis: "Which hypothesis is most likely? How do we test?"
+For mystery bugs, force multiple hypotheses:
+
+```
+I have a bug: [description]
+
+Generate 3 independent hypotheses for the root cause:
+- Hypothesis A: [most likely]
+- Hypothesis B: [second most likely]
+- Hypothesis C: [wild card]
+
+For each, explain the evidence needed to confirm or rule it out.
+
+Then recommend: which hypothesis to test first and how.
+```
 
 ### Code Review Fusion
 
-For reviewing a PR:
-- Lane 1: "Review for correctness"
-- Lane 2: "Review for security"
-- Lane 3: "Review for performance"
-- Synthesis: "Unified review with prioritized issues"
+For PR reviews, split by concern:
 
-### Automated Fusion (The Power Move)
+```
+Review this code from 3 perspectives:
 
-The manual process works, but imagine this instead:
+**Correctness:** Does it do what it claims? Edge cases?
+**Security:** Vulnerabilities? Input validation? Auth issues?
+**Performance:** Bottlenecks? Unnecessary operations?
+
+Then provide a unified review with prioritized issues.
+```
+
+---
+
+## The Power Move: Automated Fusion
+
+The Virtual Roundtable is fast. Manual multi-session is thorough. But imagine this:
 
 ```
 You: /fusion "Should we use SQLite or PostgreSQL?"
@@ -481,21 +409,62 @@ Claude: Spawning 3 perspective agents...
         **Recommendation:** SQLite now, PostgreSQL migration path ready.
 ```
 
-One command. Three perspectives. Synthesized decision. **30 seconds instead of 15 minutes.**
+One command. Three **real parallel agents** (not simulated personas). Synthesized decision. **30 seconds instead of 15 minutes.**
 
-This is the kind of automation that separates "using AI" from "multiplying yourself with AI."
+This is different from the Virtual Roundtable — each agent runs in its own context with true independence, then results are automatically collected and synthesized.
 
-**Ready to build this?** In **[Lab 7: Automated Fusion](lab-7-automated-fusion.md)**, you'll create a reusable `/fusion` skill that turns this entire workflow into a single command. You'll learn Task tool orchestration, parallel agents, and how to build skills you can take to any project.
+**Ready to build this?** In **[Lab 7: Automated Fusion](lab-7-automated-fusion.md)**, you'll create a reusable `/fusion` skill using Claude Code's Task tool. You'll learn:
+
+- **Task tool orchestration** — spawning parallel agents
+- **Perspective engineering** — forcing diverse outputs
+- **Slash command creation** — building reusable skills
+
+This is where the methodology becomes a superpower.
+
+---
+
+## Success Criteria
+
+Your Fusion Thread succeeded if:
+
+- [ ] You got genuinely different perspectives (not just variations of the same answer)
+- [ ] The synthesis identified both agreements AND disagreements
+- [ ] Final recommendation is clear and decisive (not wishy-washy)
+- [ ] Rationale explains why alternatives were rejected
+- [ ] Implementation plan is concrete (not vague)
+- [ ] Decision is documented in `architecture-decision.md`
+
+---
+
+## Failure Patterns
+
+### "All perspectives gave the same answer"
+
+**Why:** Persona constraints weren't strong enough.
+
+**Fix:** Make them more extreme: "Expert A MUST argue for the simplest option even if it has downsides."
+
+### "Synthesis was wishy-washy"
+
+**Why:** Didn't demand decisiveness.
+
+**Fix:** Add: "You MUST pick one option. 'It depends' is not acceptable without a concrete recommendation."
+
+### "I'm not sure if I trust simulated perspectives"
+
+**Why:** You might need true independence for high-stakes decisions.
+
+**Fix:** Use the manual multi-session approach (see Reference section) or build the automated version in Lab 7.
 
 ---
 
 ## Retrospective Questions
 
-- Did multiple perspectives surface anything you'd have missed?
-- Which source gave the most useful input?
-- Was synthesis easier or harder than expected?
-- How would you use this for a real decision?
+- Did the roundtable surface trade-offs you hadn't considered?
+- Did forcing the Devil's Advocate perspective help?
+- Would you trust this for a real architecture decision?
+- What decision would you Fusion Thread next?
 
 ---
 
-*Fusion Threads turn individual opinions into informed decisions.*
+*Fusion Threads turn gut instincts into informed decisions.*
